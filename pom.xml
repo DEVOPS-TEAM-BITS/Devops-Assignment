@@ -19,7 +19,6 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>   
     <modules>
-  <module>cloud-config-server</module>
   <module>cloud-gateway</module>
   <module>department-service</module>
   <module>service-registry</module>
