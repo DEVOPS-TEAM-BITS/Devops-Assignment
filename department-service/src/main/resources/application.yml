@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: DEPARTMENT-SERVICE
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://webidetesting4757575-fiori.dispatcher.int.sap.eu2.hana.ondemand.com"
+            allowedMethods:
+              - GET
 
 eureka:
   client:

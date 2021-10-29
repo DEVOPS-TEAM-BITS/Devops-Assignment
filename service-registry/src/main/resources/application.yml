@@ -1,6 +1,16 @@
 server:
   port: 8761
 
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://webidetesting4757575-fiori.dispatcher.int.sap.eu2.hana.ondemand.com/webapp/index.html?hc_orionpath=%2FDI_webide_di_workspace2y8koi6fmop43ijc%2FEmployeeMgmtSystem&neo-di-affinity=BIGipServerdisapwebide.int.sap.eu2.hana.ondemand.com+%21jFRk9BbVHECvKVsVmgLIgDLSo0a4zBUzJYuUDb37627%2FQ3Y4%2F4OpiYIfiJoiGXEM8ZLlnt3S9s%2F65JI%3D&origional-url=index.html&sap-ui-appCacheBuster=..%2F&sap-ui-xx-componentPreload=off#/Department"
+            allowedMethods:
+              - GET
+
 eureka:
   client:
     register-with-eureka: false

@@ -15,7 +15,14 @@ spring:
           uri: lb://DEPARTMENT-SERVICE
           predicates:
             - Path=/departments/**
-            
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://webidetesting4757575-fiori.dispatcher.int.sap.eu2.hana.ondemand.com"
+            allowedMethods:
+              - GET
+
+
 eureka:
   client:
     register-with-eureka: true
