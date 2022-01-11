@@ -1,0 +1,41 @@
+pipeline {
+  
+  agent any
+  
+  tools {
+    maven 'Maven'
+  }
+  //stages started
+  stages {
+    stage("Compilation and Build") {
+      steps {
+        echo 'Compile and Build the project'
+        sh "mvn clean install -DskipTests"
+      }
+    }
+    
+    stage("Integration Test") {
+      steps { 
+        echo 'Test the project'
+        sh "mvn test"
+      }
+    }
+
+    stage("source Code Analysis") {
+      agent any
+      steps {
+        withSonarQubeEnv('SonarCloud') {
+          echo 'Static code analysis with SonarQube'
+          sh 'mvn clean package -DskipTests sonar:sonar'
+        }
+      }
+    }
+    
+    //deployment 
+    stage("Deployment") {
+      steps {
+        echo 'Deploy the project'
+      }
+    }
+  }
+}
