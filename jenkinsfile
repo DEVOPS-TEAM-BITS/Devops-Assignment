@@ -21,7 +21,7 @@ pipeline {
       }
     }
 
-    stage("source Code Analysis") {
+    stage("Source Code Analysis") {
       agent any
       steps {
         withSonarQubeEnv('SonarCloud') {
