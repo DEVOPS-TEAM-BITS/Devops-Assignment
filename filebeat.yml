@@ -1,0 +1,22 @@
+filebeat.registry.path: /var/lib/filebeat/registry
+filebeat.shutdown_timeout: 30s
+filebeat.inputs:
+- type: log
+paths:
+- /tmp/*/*/keepRunning*
+scan_frequency: 5s
+fields:
+log_type: logs
+exclude_files: ['\.gz$','\.pid$']
+exclude_lines: '^[[:space:]]*$'
+multiline.pattern: '^Mon |^Tue |^Wed |^Thu |^Fri |^Sat |^Sun '
+multiline.negate: true
+multiline.match: after
+output.logstash:
+hosts: ["localhost:5044"]
+processors:
+- add_cloud_metadata:
+- add_locale: ~
+http.enabled: true
+http.host: 0.0.0.0
+http.port: 5066
